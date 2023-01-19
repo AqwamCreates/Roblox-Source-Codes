@@ -8,7 +8,6 @@ local Backpack = Player.Backpack
 local TweenService = game.TweenService
 
 local RunService = game["Run Service"]
-local Heartbeat = RunService.Heartbeat
 local RenderStepped = RunService.RenderStepped
 
 local receivedItemNotificationEdgePositionXOffset = 20
@@ -25,38 +24,38 @@ local ItemReceivedNotificationFirstVisiblePosition = UDim2.new(0, receivedItemNo
 local PreviousToolEquipped
 
 local function createItemReceivedNotification(Tool)
-	
+
 	local ReceivedItemNotification = Instance.new("TextLabel")
-	
+
 	ReceivedItemNotification.BorderMode = Enum.BorderMode.Outline
-	
+
 	ReceivedItemNotification.BorderColor3 = Color3.new(255,0,0)
-	
+
 	ReceivedItemNotification.BackgroundColor3 = Color3.new(0,0,0)
-	
+
 	ReceivedItemNotification.TextColor3 = Color3.new(255,255,255)
-	
+
 	ReceivedItemNotification.TextXAlignment = Enum.TextXAlignment.Left
-	
+
 	ReceivedItemNotification.Size = UDim2.new(0, receivedItemNotificationSizeXOffset, 0, receivedItemNotificationSizeYOffset)
-	
+
 	ReceivedItemNotification.TextSize = 12
-	
+
 	ReceivedItemNotification.Text = "\t\t Received: " .. Tool.Name
-	
+
 	return ReceivedItemNotification
-	
+
 end
 
 local function makeItemReceivedNotificationDropUponNewItemReceived(ReceivedItemNotification)
-	
+
 	local targetPositionXOffset = receivedItemNotificationEdgePositionXOffset
 	local targetPositionYOffset = ReceivedItemNotification.Position.Y.Offset + receivedItemNotificationSizeYOffset + receivedItemNotificationSpacingYOffset
-	
+
 	local targetPosition = UDim2.new(0, targetPositionXOffset, 0, targetPositionYOffset)
-	
+
 	local tweenInfo = TweenInfo.new(
-		
+
 		0.25, -- Time
 		Enum.EasingStyle.Linear, -- EasingStyle
 		Enum.EasingDirection.In, -- EasingDirection
@@ -70,112 +69,112 @@ local function makeItemReceivedNotificationDropUponNewItemReceived(ReceivedItemN
 	goal.Position = targetPosition
 
 	local tween = TweenService:Create(ReceivedItemNotification, tweenInfo, goal)
-	
+
 	tween:Play()
 
 end
 
 local function createReceivedItemNotificationDisappearAnimation(ReceivedItemNotification)
-	
+
 	for transparency = 0, 1, 0.05 do
-		
+
 		ReceivedItemNotification.Transparency = transparency
-		
+
 		RenderStepped:Wait(0.2)
-		
+
 	end
-	
+
 	ReceivedItemNotification:Destroy()
-	
+
 end
 
 local function checkIfReceivedItemNotificationDisappear(ReceivedItemNotification)
-	
+
 	local totalDeltaTime = 0
-	
+
 	local connection
-	
-	connection = Heartbeat:Connect(function(deltaTime)
-		
+
+	connection = RenderStepped:Connect(function(deltaTime)
+
 		totalDeltaTime += deltaTime
-		
+
 		if (totalDeltaTime >= 5) then
-			
+
 			connection:Disconnect()
 			createReceivedItemNotificationDisappearAnimation(ReceivedItemNotification)
-			
+
 		end
 
 	end)
-	
+
 end
 
 
 
 local function createItemReceivedNotificationAnimation(ReceivedItemNotification)
-	
+
 	ReceivedItemNotification.Position = UDim2.new(0, receivedItemNotificationSizeXOffset - 5, 0, receivedItemNotificationEdgePositionYOffset)
-	
+
 	local tweenInfo = TweenInfo.new(
-		
+
 		0.25, -- Time
 		Enum.EasingStyle.Linear, -- EasingStyle
 		Enum.EasingDirection.In, -- EasingDirection
 		0, -- RepeatCount (when less than zero the tween will loop indefinitely)
 		false, -- Reverses (tween will reverse once reaching it's goal)
 		0 -- DelayTime	
-		
+
 	)
-	
+
 	local goal = {}
 	goal.Position = ItemReceivedNotificationFirstVisiblePosition
-	
+
 	ReceivedItemNotification.Parent = AllReceivedItemNotifications
-	
+
 	local tween = TweenService:Create(ReceivedItemNotification, tweenInfo, goal)
-	
+
 	tween:Play()
-	
-end
 
-
-
-local function onToolEquipped(Tool)
-	
-	if Tool:IsA("Tool") then
-
-		PreviousToolEquipped = Tool
-
-	end
-	
 end
 
 local function onItemReceived(Tool)
-	
+
 	if (Tool == PreviousToolEquipped) then return nil end
-	
+
 	local ReceivedItemNotification = createItemReceivedNotification(Tool)
-	
+
 	createItemReceivedNotificationAnimation(ReceivedItemNotification)
-	
+
 	AllReceivedItemNotifications.ChildAdded:Connect(function()
 
 		makeItemReceivedNotificationDropUponNewItemReceived(ReceivedItemNotification)
 
 	end)
-	
+
 	checkIfReceivedItemNotificationDisappear(ReceivedItemNotification)
-	
+
 end
 
+local function onToolEquipped(Tool)
+	
+	if not (Tool:IsA("Tool")) then return nil end
+	
+	if (not PreviousToolEquipped) then
 
+		onItemReceived(Tool)
+
+	end
+	
+	PreviousToolEquipped = Tool
+
+end
 
 local function run()
-	
+
 	Character.ChildAdded:Connect(onToolEquipped)
-	
+
 	Backpack.ChildAdded:Connect(onItemReceived)
-	
+
 end
 
 run()
