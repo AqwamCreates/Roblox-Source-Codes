@@ -1,22 +1,23 @@
-local Players = game:GetService("Players")
-
 local RunService = game:GetService("RunService")
 
-local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local Events = ReplicatedStorage:FindFirstChild("Events")
-local MouseFollowFunctionRemoteEvent = Events.MouseFollowFunctionRemoteEvent
+local MouseFollowFunctionRemoteEvent = game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("MouseFollowFunctionRemoteEvent")
 
-local currentCamera = workspace.CurrentCamera
+local CurrentCamera = workspace.CurrentCamera
 
-local angle
-
+local halfPi = math.pi / 2 -- to replace math.rad(90) since math.90 requires it to convert
 
 local function checkMouseLocation()
+		
+	local angleYInRadians = CurrentCamera.CFrame.LookVector.Y + halfPi -- remove the halfPi if roblox issue is solved
 	
-	angle = currentCamera.CFrame.LookVector.Y
-	
-	MouseFollowFunctionRemoteEvent:FireServer(angle)
+	MouseFollowFunctionRemoteEvent:FireServer(angleYInRadians)
 	
 end
 
-RunService.RenderStepped:Connect(checkMouseLocation)
+local function run()
+	
+	RunService.Heartbeat:Connect(checkMouseLocation)
+	
+end
+
+run()
