@@ -4,17 +4,18 @@ local Player = game:GetService("Players"):GetPlayerFromCharacter(Character)
 local TweenService = game:GetService("TweenService")
 
 local tweenInfo = TweenInfo.new(
+	
 	0.1, -- Time
 	Enum.EasingStyle.Linear, -- EasingStyle
 	Enum.EasingDirection.Out, -- EasingDirection
 	0, -- RepeatCount (when less than zero the tween will loop indefinitely)
 	false, -- Reverses (tween will reverse once reaching it's goal)
 	0 -- DelayTime
+	
 )
 
 local Events = game:GetService("ReplicatedStorage").Events
 local MouseFollowFunctionRemoteEvent = Events:WaitForChild("MouseFollowFunctionRemoteEvent")
-local AimRemoteEvent = Events.AimRemoteEvent
 
 local RightUpperArm = Character.RightUpperArm
 local RightShoulder = RightUpperArm.RightShoulder
