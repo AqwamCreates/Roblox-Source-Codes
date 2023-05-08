@@ -22,8 +22,6 @@ local RightShoulder = RightUpperArm.RightShoulder
 local LeftUpperArm = Character.LeftUpperArm
 local LeftShoulder = LeftUpperArm.LeftShoulder
 
-local angleXWhenAimingInRadians = math.rad(50) -- add positive value to current value to move left, add negative value to current value to move right. At 46, it alligns properly when in full screen. Same for 50
-
 local rightArmAngleWhenNotAimingInRadians = math.rad(-30)
 local leftArmAngleWhenNotAimingInRadians = math.rad(60)
 
