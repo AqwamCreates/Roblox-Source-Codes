@@ -14,7 +14,19 @@ Usually, it is recommended that you have few layers if you can determine what pa
 
 *  Two classes for two different combinations of inputs. If the input is greater than 0, then it belongs to class 1, otherwise class -1.
 
-If you can determine the pattern, then I recommend you that you only build two layer neural network.
+If you can determine the pattern, then I recommend you that you only build two layer neural network as more complex models may produce less accurate outputs.
+
+In other words, the more complex the pattern means more layers are needed to produce more accurate outputs.
+
+Here's a formula for you to remember:
+
+* C = Model Complexity (a higher value indicates a more complex model), where 0 is simple and 1 is complex.
+
+* P = Pattern Detectability (a higher value indicates an easier-to-detect pattern), where 0 is easily detected and 1 is impossible to detect.
+
+* A = Accuracy, where value is between 0 and 1.
+
+* A = 1 - (k * C * P)
 
 ## Activation functions
 
