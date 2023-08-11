@@ -34,7 +34,7 @@ Here's a formula for you to remember (for qualitative analysis, not quantitative
 
 Different activation functions have different properties. It is very important to choose the correct ones to achieve high accuracy. Here are the functions with their properties listed below:
 
-* ReLU: Great for making sure only few neurons get activated. Since it gives the output of 0 for all negative values, then there is a chance that lower the number of neurons activating for each iteration during training. This could lead to no neurons activating and lead to innacurate predictions.
+* ReLU: Great for making sure only few neurons get activated. The problem is that it gives the output of 0 for all negative values, which could lead to lower number of neurons activating for each iteration during training. Eventually, it will lead to no neurons activating and produce innacurate predictions.
 
 * LeakyReLU: Same as ReLU, but less terrible at handling negative values.
 
