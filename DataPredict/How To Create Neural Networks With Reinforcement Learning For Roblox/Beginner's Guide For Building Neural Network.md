@@ -18,7 +18,7 @@ If you can determine the pattern, then I recommend you that you only build two l
 
 In other words, the more complex the pattern means more layers are needed to produce more accurate outputs.
 
-Here's a formula for you to remember:
+Here's a formula for you to remember (for qualitative analysis, not quantitative):
 
 * C = Model Complexity (a higher value indicates a more complex model), where 0 is simple and 1 is complex.
 
@@ -32,7 +32,7 @@ Here's a formula for you to remember:
 
 Different activation functions have different properties. It is very important to choose the correct ones to achieve high accuracy. Here are the functions with their properties listed below:
 
-* ReLU: Great for making sure only few neurons get activated. Terrible at handling large frequency of negative values; it could lead to no neurons activating and lead to innacurate predictions.
+* ReLU: Great for making sure only few neurons get activated. Since it gives the output of 0 for all negative values, then there is a chance that lower the number of neurons activating for each iterations during training. This could lead to no neurons activating and lead to innacurate predictions.
 
 * LeakyReLU: Same as ReLU, but less terrible at handling negative values.
 
@@ -50,6 +50,10 @@ How we initialize our weights can affect how fast the model can learn. For examp
 
 * Having all weight values that falls between 1 and 0 ( or -1). This allows the weight values to start at the center and hence shorter distance to travel to global optimum (most of the time).
 
-## Bias Neurons.
+## Regularization
+
+Regularization avoids our model from "memorizing" the connection between the inputs and outputs, which could lead to lower accuracy. It ensure that the model generalizes the connection between the inputs and outputs.
+
+## Bias Neurons
 
 The presence of bias neuron must not be underestimated. It allows the calculated values to move away from 0 instead of being centered to it.
