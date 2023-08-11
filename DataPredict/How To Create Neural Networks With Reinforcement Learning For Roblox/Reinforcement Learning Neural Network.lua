@@ -14,13 +14,13 @@ local currentAccuracyArray = {}
 
 local function buildModel()
 	
-	local Model = DataPredict.Models.QLearningNeuralNetwork.new()
+	local Model = DataPredict.Models.QLearningNeuralNetwork.new(1, 0.01)
 	
 	Model:setModelParametersInitializationMode("RandomNormalNegativeAndPositive")
 	
 	Model:addLayer(2, true, "tanh")
 	
-	Model:addLayer(4, false, "ReLU")
+	Model:addLayer(4, false, "ELU")
 	
 	Model:setClassesList({1, 2, 3, 4})
 	
