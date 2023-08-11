@@ -2,7 +2,7 @@
 
 This guide assumes that you have basic understanding of neural networks. If not, you can find the resources online and have a look at how neural networks works.
 
-Make note that this guide is an oversimplification and may not exactly cover the whole details.
+Make note that this guide is an oversimplification and may not exactly cover the whole details of how neural network works.
 
 Without further ado, let's begin.
 
