@@ -28,7 +28,7 @@ Here's a formula for you to remember:
 
 * A = 1 - (C * P)
 
-## Activation functions
+## Activation Functions
 
 Different activation functions have different properties. It is very important to choose the correct ones to achieve high accuracy. Here are the functions with their properties listed below:
 
@@ -50,6 +50,6 @@ How we initialize our weights can affect how fast the model can learn. For examp
 
 * Having all weight values that falls between 1 and 0 ( or -1). This allows the weight values to start at the center and hence shorter distance to travel to global optimum (most of the time).
 
-## Bias Neuron.
+## Bias Neurons.
 
 The presence of bias neuron must not be underestimated. It allows the calculated values to move away from 0 instead of being centered to it.
