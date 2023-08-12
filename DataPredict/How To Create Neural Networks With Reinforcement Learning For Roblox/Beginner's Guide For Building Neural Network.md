@@ -16,7 +16,7 @@ Usually, it is recommended that you have few layers if you can determine what pa
 
 *  Two classes for two different combinations of inputs. If the input is greater than 0, then it belongs to class 1, otherwise class -1.
 
-If you can determine the pattern, then I recommend you that you only build two layer neural network as more complex models may produce less accurate outputs.
+If you can determine the pattern, then I recommend you that you only build two layer neural networks as more complex models may produce less accurate outputs.
 
 In other words, the more complex the pattern means more layers are needed to produce more accurate outputs.
 
