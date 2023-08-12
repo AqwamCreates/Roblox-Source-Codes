@@ -40,7 +40,7 @@ Different activation functions have different properties. It is very important t
 
 * ELU: Same as ReLU, but capable of handling negative input values. The only problem is the computational cost as it uses exponent function.
 
-* Sigmoid: As values goes further from 0.5, the output slowly reaches 1 or 0; excellent for making sure no large outputs being passed on to next neuron. But being not centered around 0 may cause some issue with some optimizers and weight initialization strategies.
+* Sigmoid: As input values goes further from 0.5, the output slowly reaches 1 or 0; excellent for making sure no large outputs being passed on to next neuron. But being not centered around 0 may cause some issue with some optimizers and weight initialization strategies.
 
 * Tanh: Same as sigmoid, but it is centered around 0. So less issues with optimizers and some initialization strategies. Also, great for negative input values.
 
