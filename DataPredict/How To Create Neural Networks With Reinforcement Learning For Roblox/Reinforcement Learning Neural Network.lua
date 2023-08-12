@@ -46,7 +46,7 @@ local function checkIfPunishedOrRewarded(environmentFeatureVector, predictedLabe
 
 		isRewarded = (predictedLabel == 3)
 
-	elseif (environmentFeatureVector[1][2] < 0) and (environmentFeatureVector[1][3] < 0) then --  negative + negative = 3
+	elseif (environmentFeatureVector[1][2] < 0) and (environmentFeatureVector[1][3] < 0) then --  negative + negative = 4
 
 		isRewarded = (predictedLabel == 4)
 
