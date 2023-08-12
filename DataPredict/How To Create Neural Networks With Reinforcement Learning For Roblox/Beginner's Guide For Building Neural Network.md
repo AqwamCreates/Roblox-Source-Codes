@@ -28,7 +28,7 @@ Here's a formula for you to remember (for qualitative analysis, not quantitative
 
 * A = Accuracy, where value is between 0 and 1.
 
-* A = 1 - (C * P)
+* A = (1 - C) * P
 
 ## Activation Functions
 
