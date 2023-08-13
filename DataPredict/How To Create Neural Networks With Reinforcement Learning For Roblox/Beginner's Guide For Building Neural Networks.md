@@ -18,7 +18,7 @@ Usually, it is recommended that you have few layers if you can determine what pa
 
 If you can determine the pattern, then I recommend you that you only build two layer neural networks as more complex models may produce less accurate outputs.
 
-In other words, the more complex the pattern means more layers are needed to produce more accurate outputs.
+In other words, the more complex the pattern means more layers are needed to produce more accurate outputs (generally).
 
 Here's a formula for you to remember (for qualitative analysis, not quantitative):
 
