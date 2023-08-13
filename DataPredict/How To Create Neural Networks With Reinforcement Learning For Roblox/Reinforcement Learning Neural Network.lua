@@ -24,10 +24,10 @@ local function buildModel()
 	
 	Model:setClassesList({1, 2, 3, 4})
 	
-	Model:setPrintOutput(false)
+	Model:setPrintReinforcementOutput(false)
 	
 	return Model
-	
+
 end
 
 local function checkIfPunishedOrRewarded(environmentFeatureVector, predictedLabel)
@@ -70,25 +70,31 @@ local function generateEnvironmentFeatureVector()
 	
 end
 
+local function countTrueBooleansInBooleanArray(booleanArray)
+	
+	local numberOfTrueBooleans = 0
+	
+	for i, boolean in ipairs(booleanArray) do
+
+		if (boolean == true) then
+
+			numberOfTrueBooleans += 1
+
+		end
+
+	end
+	
+	return numberOfTrueBooleans
+	
+end
+
 local function calculateCurrentAccuracy(booleanArray)
 	
 	local numberOfBooleans = #booleanArray
 	
-	local numberOfTrueBooleans = 0
+	local numberOfTrueBooleans = countTrueBooleansInBooleanArray(booleanArray) 
 	
-	local currentAccuracy
-	
-	for i, boolean in ipairs(booleanArray) do
-		
-		if (boolean == true) then
-			
-			numberOfTrueBooleans += 1
-			
-		end
-		
-	end
-	
-	currentAccuracy = (numberOfTrueBooleans / numberOfBooleans) * 100
+	local currentAccuracy = (numberOfTrueBooleans / numberOfBooleans) * 100
 	
 	currentAccuracy = math.floor(currentAccuracy)
 	
