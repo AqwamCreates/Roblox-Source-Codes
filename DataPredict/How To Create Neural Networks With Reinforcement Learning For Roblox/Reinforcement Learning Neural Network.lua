@@ -16,8 +16,6 @@ local function buildModel()
 	
 	local Model = DataPredict.Models.QLearningNeuralNetwork.new(1, 0.01)
 	
-	Model:setModelParametersInitializationMode("LeCunNormal")
-	
 	Model:addLayer(2, true, "tanh")
 	
 	Model:addLayer(4, false, "ELU")
