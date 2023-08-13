@@ -58,4 +58,4 @@ Regularization avoids our model from "memorizing" the connection between the inp
 
 ## Bias Neurons
 
-The presence of bias neuron must not be underestimated. It allows the calculated values to move away from 0 instead of being centered to it. In most cases, these are usually added to each layers except the final layer.
+The presence of bias neuron must not be underestimated. It allows the calculated values to move away from 0 instead of being centered to it. In most cases, these are usually added to each layer except the final layer.
