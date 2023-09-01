@@ -1,2 +1,2 @@
-# Roblox-Tutorial-Codes
-All the codes that were shown in AqwamCreates' Roblox Coding Tutorials
+# Roblox-Tutorials
+All the codes that were shown in AqwamCreates' YouTube channel.
