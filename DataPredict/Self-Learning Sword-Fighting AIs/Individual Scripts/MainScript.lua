@@ -24,9 +24,9 @@ local ModelIDArray = {}
 
 -------------------------------------------------------------------------------------------------
 
-local startingID = 2
+local startingID = 1
 
-local finalID = 2
+local finalID = 7
 
 local autoSaveInSeconds = 5 * 60
 
@@ -36,7 +36,7 @@ local timeElapsed = 0
 
 local function buildModel()
 	
-	local Model = DataPredict.Models.ExpectedStateActionRewardStateActionNeuralNetwork.new()
+	local Model = DataPredict.Models.DoubleQLearningNeuralNetworkV2.new()
 
 	Model:addLayer(15, true, 'LeakyReLU')
 
@@ -50,7 +50,7 @@ local function buildModel()
 
 	Model:setPrintReinforcementOutput(false)
 	
-	--Model:setExperienceReplay(true, 3, 20)
+	Model:setExperienceReplay(true, 3, 20)
 	
 	return Model
 	
@@ -239,6 +239,8 @@ local function generateAI(ID)
 
 	ClonedAI.Senses.Enabled = true
 	
+	ClonedAI.Humanoid.DisplayName = ID
+	
 end
 
 local function onAIRemoved(AI)
@@ -278,5 +280,3 @@ local function run()
 end
 
 run()
-
-
