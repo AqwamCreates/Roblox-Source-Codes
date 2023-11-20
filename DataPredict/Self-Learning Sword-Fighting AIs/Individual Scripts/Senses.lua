@@ -233,6 +233,8 @@ local function getRewardValue()
 	
 	local closestEnemy, damageDealt, distanceDifference, distanceToEnemy = getEnemyStatus()
 	
+	local isEnemy, viewingDistance = getCurrentView()
+	
 	local noEnemy = (closestEnemy == nil)
 	
 	local idlePunishment = (noEnemy and -0.1) or 0
@@ -240,6 +242,8 @@ local function getRewardValue()
 	local isEnemyDead = (previousEnemyHealth == 0)
 	
 	local enemyDeathReward = (isEnemyDead and 0.3) or 0
+	
+	local isEnemyReward = (isEnemy and 0.1) or -0.1
 	
 	local healthChangeRatio = (healthChange / maxHealth)
 	
@@ -251,7 +255,7 @@ local function getRewardValue()
 	
 	local distanceChangeReward = (distanceDifference * distanceAdjustmentFactor)
 	
-	local rewardValue = healthChangeRatio + healReward + damageDealtRatio + enemyDeathReward + distanceChangeReward + idlePunishment
+	local rewardValue = healthChangeRatio + healReward + damageDealtRatio + enemyDeathReward + distanceChangeReward + idlePunishment + isEnemyReward
 	
 	return rewardValue
 	
@@ -280,4 +284,3 @@ Humanoid.Died:Connect(function()
 end)
 
 Connection = RunService.Heartbeat:Connect(senseEnvironment)
-
