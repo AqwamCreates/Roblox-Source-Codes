@@ -243,7 +243,7 @@ local function getRewardValue()
 	
 	local enemyDeathReward = (isEnemyDead and 0.3) or 0
 	
-	local isEnemyReward = (isEnemy and 0.1) or -0.1
+	local isEnemyReward = (isEnemy and 0.1) or -0.01
 	
 	local healthChangeRatio = (healthChange / maxHealth)
 	
