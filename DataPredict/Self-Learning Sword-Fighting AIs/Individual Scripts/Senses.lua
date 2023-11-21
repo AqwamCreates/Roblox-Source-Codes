@@ -278,6 +278,10 @@ Humanoid.Died:Connect(function()
 	if Connection then Connection:Disconnect() end
 
 	InputEvent:Fire(IDValue, defaultEnvironmentVector, -1)
+	
+	task.wait()
+	
+	InputEvent:Fire(IDValue, defaultEnvironmentVector, 0)
 
 	Character:Destroy()
 
