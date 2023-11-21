@@ -251,7 +251,7 @@ local function getRewardValue()
 	
 	local healthPercentage = currentHealth / maxHealth
 	
-	local healReward = (1 - healthPercentage) * distanceToEnemy
+	local healReward = (1 - healthPercentage) * distanceToEnemy * distanceAdjustmentFactor
 	
 	local distanceChangeReward = (distanceDifference * distanceAdjustmentFactor)
 	
