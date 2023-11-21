@@ -36,9 +36,11 @@ local timeElapsed = 0
 
 local function buildModel()
 	
-	local Model = DataPredict.Models.DoubleQLearningNeuralNetworkV2.new()
+	local ExperienceReplay = DataPredict.ExperienceReplays.UniformExperienceReplay.new(1, 10)
+	
+	local Model = DataPredict.Models.ExpectedStateActionRewardStateActionNeuralNetwork.new(nil, nil, nil, 1000, nil, 0.9999999)
 
-	Model:addLayer(15, true, 'LeakyReLU')
+	Model:addLayer(15, true, 'Mish')
 
 	Model:addLayer(10, true, 'LeakyReLU')
 
@@ -50,7 +52,7 @@ local function buildModel()
 
 	Model:setPrintReinforcementOutput(false)
 	
-	Model:setExperienceReplay(true, 3, 20)
+	Model:setExperienceReplay(ExperienceReplay)
 	
 	return Model
 	
